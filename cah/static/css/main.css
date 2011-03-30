@@ -23,7 +23,7 @@ a:hover { text-decoration:underline; }
 html, body {
     background:url('../img/bg.png') repeat-x top left;
     font-family:"PF Square Sans Pro Regular", sans-serif;
-    font-size:12px;
+    font-size:14px;
     height:100%;
 }
 
