@@ -5,4 +5,5 @@ from django.http import HttpResponse
 
 urlpatterns = patterns('cah.recipes.views',
     url(r'^$', 'index'),
+    url(r'^2/$', 'detail'),
 )

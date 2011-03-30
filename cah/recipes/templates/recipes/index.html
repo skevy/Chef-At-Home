@@ -2,12 +2,53 @@
 
 {% block title %}Recipes{% endblock %}
 
-{% block body_class %}recipes{% endblock %}
+{% block body_class %}recipes has-table{% endblock %}
 
-{% block main_nav %}<li><a href="/menus/">Menus</a></li>
+{% block main_nav %}
+<li class="active"><a href="/recipes/">Recipes</a></li>
+<li><a href="/menus/">Menus</a></li>
 <li><a href="/meal-plans/">Meal Plans</a></li>
-<li class="active"><a href="/recipes/">Recipes</a></li>{% endblock %}
+{% endblock %}
 
 {% block content %}
-Recipes
+
+
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="/media/recipes/photos/thumb/chicken.jpeg" width="100" height="70"></td>
+            <td>Chicken Picatta</td>
+            <td>3 out of 5</td>
+            <td><a href="/recipes/2/">View</a></td>
+        </tr>
+        <tr>
+            <td><img src="/media/recipes/photos/thumb/potsticker.jpeg" width="100" height="70"></td>
+            <td>Pork Potstickers</td>
+            <td>4 out of 5</td>
+            <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+            <td><img src="/media/recipes/photos/thumb/orange_chicken.jpeg" width="100" height="70"></td>
+            <td>Orange Chicken</td>
+            <td>2 out of 5</td>
+            <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+            <td><img src="/media/recipes/photos/thumb/bruschetta.jpeg" width="100" height="70"></td>
+            <td>Bruschetta</td>
+            <td>4 out of 5</td>
+            <td><a href="#">View</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
 {% endblock %}

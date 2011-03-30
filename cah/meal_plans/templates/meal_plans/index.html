@@ -2,12 +2,33 @@
 
 {% block title %}Meal Plans{% endblock %}
 
-{% block body_class %}meal-plans{% endblock %}
+{% block body_class %}meal-plans has-table{% endblock %}
 
-{% block main_nav %}<li><a href="/menus/">Menus</a></li>
+{% block main_nav %}
+<li><a href="/recipes/">Recipes</a></li>
+<li><a href="/menus/">Menus</a></li>
 <li class="active"><a href="/meal-plans/">Meal Plans</a></li>
-<li><a href="/recipes/">Recipes</a></li>{% endblock %}
+{% endblock %}
 
 {% block content %}
-Meal Plans
+
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="/media/meal_plans/photos/thumb/protein.jpeg" width="100" height="70"></td>
+            <td>Protein Protein Protein!!</td>
+            <td>5 out of 5</td>
+            <td><a href="#">View</a></td>
+        </tr>
+    </tbody>
+</table>
+
 {% endblock %}

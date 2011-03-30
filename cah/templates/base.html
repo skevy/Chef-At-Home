@@ -6,44 +6,48 @@
     <script src="/static/js/cah.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body class="{% block body_class %}{% endblock %}">
-    <div id="wrapper">
-        <div id="header">
-            <div id="top-bar">
-                <a class="login-button facebook-login" href="#">Sign in with Facebook</a>
-                <a class="login-button twitter-login" href="#">Sign in with Twitter</a>
-                <a href="#">Sign in</a>
-                <a href="#">Sign up</a>
-                <form>
-                    <input type="text" id="search" name="q" value="" />
-                </form>
+    <div id="page">
+        <div id="wrapper">
+            <div id="header">
+                <div id="top-bar">
+                    <a class="login-button facebook-login" href="#">Sign in with Facebook</a>
+                    <a class="login-button twitter-login" href="#">Sign in with Twitter</a>
+                    <a href="#">Sign in</a>
+                    <a href="#">Sign up</a>
+                    <form>
+                        <input type="text" id="search" name="q" value="" />
+                    </form>
+                </div>
+                <div id="main-nav">
+                    <h1><a href="/">Chef At Home</a></h1>
+                    <ul>
+                        {% block main_nav %}
+                        <li><a href="/recipes/">Recipes</a></li>
+                        <li><a href="/menus/">Menus</a></li>
+                        <li><a href="/meal-plans/">Meal Plans</a></li>
+                        {% endblock %}
+                    </ul>
+                </div>
             </div>
-            <div id="main-nav">
-                <h1><a href="/">Chef At Home</a></h1>
-                <ul>
-                    {% block main_nav %}<li><a href="/menus/">Menus</a></li>
-                    <li><a href="/meal-plans/">Meal Plans</a></li>
-                    <li><a href="/recipes/">Recipes</a></li>{% endblock %}
-                </ul>
+            <div id="body">
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
-        <div id="body">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
-    <div id="footer-wrapper">
-        <div id="footer">
-            <div class="left">
-                <p class="links">
-                    <a href="#">FAQ</a> / <a href="#">Contact</a> / <a href="#">Advertise</a> / <a href="#">Privacy</a> / <a href="#">Chef At Home on Twitter</a> / <a href="#">Chef At Home on Facebook</a>
-                </p>
-                <p class="copyright">
-                    Copyright &copy; 2011 Chef At Home.  All Rights Reserved.
-                </p>
-            </div>
-            <div class="right">
-                <img src="/static/img/footer-like.png" />
-                <img src="/static/img/footer-twitter.png" />
+        <div id="footer-wrapper">
+            <div id="footer">
+                <div class="left">
+                    <p class="links">
+                        <a href="#">FAQ</a> / <a href="#">Contact</a> / <a href="#">Advertise</a> / <a href="#">Privacy</a> / <a href="#">Chef At Home on Twitter</a> / <a href="#">Chef At Home on Facebook</a>
+                    </p>
+                    <p class="copyright">
+                        Copyright &copy; 2011 Chef At Home.  All Rights Reserved.
+                    </p>
+                </div>
+                <div class="right">
+                    <img src="/static/img/footer-like.png" />
+                    <img src="/static/img/footer-twitter.png" />
+                </div>
             </div>
         </div>
     </div>

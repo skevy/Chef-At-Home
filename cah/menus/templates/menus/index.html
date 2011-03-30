@@ -2,12 +2,40 @@
 
 {% block title %}Menus{% endblock %}
 
-{% block body_class %}menus{% endblock %}
+{% block body_class %}menus has-table{% endblock %}
 
-{% block main_nav %}<li class="active"><a href="/menus/">Menus</a></li>
+{% block main_nav %}
+<li><a href="/recipes/">Recipes</a></li>
+<li class="active"><a href="/menus/">Menus</a></li>
 <li><a href="/meal-plans/">Meal Plans</a></li>
-<li><a href="/recipes/">Recipes</a></li>{% endblock %}
+{% endblock %}
 
 {% block content %}
-Menus
+
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="/media/menus/photos/thumb/italian.jpeg" width="100" height="70"></td>
+            <td>Italian Dinner</td>
+            <td>5 out of 5</td>
+            <td><a href="#">View</a></td>
+        </tr>
+        <tr>
+            <td><img src="/media/menus/photos/thumb/asian.jpeg" width="100" height="70"></td>
+            <td>Asian Sensation!</td>
+            <td>3 out of 5</td>
+            <td><a href="#">View</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
 {% endblock %}
