@@ -1,0 +1,179 @@
+@font-face { font-family: 'PF Square Sans Pro Bold'; src: url('../fonts/pfsquaresanspro-bold-webfont.eot'); }
+@font-face { font-family: 'PF Square Sans Pro Bold'; src: url("//:") format("no404"), url('../static/fonts/pfsquaresanspro-bold-webfont.woff') format('woff'), url('../fonts/pfsquaresanspro-bold-webfont.ttf') format('truetype'), url('../fonts/pfsquaresanspro-bold-webfont.svg#svgSquareSans') format('svg'); }
+
+@font-face { font-family: 'PF Square Sans Pro Light'; src: url('../fonts/pfsquaresanspro-light-webfont.eot'); }
+@font-face { font-family: 'PF Square Sans Pro Light'; src: url("//:") format("no404"), url('../fonts/pfsquaresanspro-light-webfont.woff') format('woff'), url('../fonts/pfsquaresanspro-light-webfont.ttf') format('truetype'), url('../fonts/pfsquaresanspro-light-webfont.svg#svgSquareSans') format('svg'); }
+
+@font-face { font-family: 'PF Square Sans Pro Medium'; src: url('../fonts/pfsquaresanspro-medium-webfont.eot'); }
+@font-face { font-family: 'PF Square Sans Pro Medium'; src: url("//:") format("no404"), url('../fonts/pfsquaresanspro-medium-webfont.woff') format('woff'), url('../fonts/pfsquaresanspro-medium-webfont.ttf') format('truetype'), url('../fonts/pfsquaresanspro-medium-webfont.svg#svgSquareSans') format('svg'); }
+
+@font-face { font-family: 'PF Square Sans Pro Regular'; src: url('../fonts/pfsquaresanspro-regular-webfont.eot'); }
+@font-face { font-family: 'PF Square Sans Pro Regular'; src: url("//:") format("no404"), url('../fonts/pfsquaresanspro-regular-webfont.woff') format('woff'), url('../fonts/pfsquaresanspro-regular-webfont.ttf') format('truetype'), url('../fonts/pfsquaresanspro-regular-webfont.svg#svgSquareSans') format('svg'); }
+
+* {
+    padding:0;
+    margin:0;
+}
+.center { text-align:center; }
+.left { float:left; }
+.right { float:right; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+html, body {
+    background:url('../img/bg.png') repeat-x top left;
+    font-family:"PF Square Sans Pro Regular", sans-serif;
+    font-size:12px;
+    height:100%;
+}
+
+p { line-height:1.5em; }
+
+* html div#wrapper { height: 100%;}
+div#wrapper {
+    width:960px;
+    margin:0 auto;
+    position: relative; 
+    min-height: 100%;
+}
+
+a.login-button {
+    display:inline-block;
+    width:150px;
+    height:22px;
+    text-indent:-9999px;
+    outline:none;
+    z-index:100;
+}
+a.login-button:hover { background-position:0px -24px; }
+a.facebook-login { background:url('../img/facebook.png') no-repeat top left; }
+a.twitter-login { background:url('../img/twitter.png') no-repeat top left; }
+
+div#header {
+    height:38px;
+    width:960px;
+}
+
+    div#top-bar {
+        padding-top:9px;
+    }
+    
+        div#top-bar a { float:left; margin-right:10px; color:white; line-height:22px; }
+        
+        div#top-bar form { float:right; }
+        
+            div#top-bar form input { margin-top:-3px; width:312px; height:26px; border:none; background:url('../img/search-bar.png') no-repeat top left; color:white; font-size:14px; padding:0px 45px 0px 10px; }
+            div#top-bar form input:focus { outline:none; }
+    
+    div#main-nav {
+        clear:both;
+        position:relative;
+    }
+    
+        div#main-nav h1 a {
+            display:block;
+            width:141px;
+            height:205px;
+            position:absolute;
+            top:7px;
+            left:0px;
+            text-indent:-9999px;
+            background:url('../img/logo.png') no-repeat top left;
+        }
+        
+        div#main-nav ul { list-style-type:none; position:absolute; top: 12px; left: 161px; }
+        
+        div#main-nav li {
+            display:block;
+            float:left;
+            margin-right:20px;
+            margin-top:1px;
+        }
+        
+        div#main-nav li a { 
+            display:block;
+            color:white; 
+            font-family:"PF Square Sans Pro Medium", sans-serif;
+            font-size:17px; 
+            line-height:39px; 
+            padding:0px 15px;
+        }
+        div#main-nav li a:hover, div#main-nav li.active a {
+            color:black;
+            text-decoration:none;
+            background:white;
+            border-top:solid 1px rgba(194, 194, 194, .71);
+            border-left:solid 1px rgba(194, 194, 194, .71);
+            border-right:solid 1px rgba(194, 194, 194, .71);
+            -webkit-border-radius:5px 5px 0px 0px;
+            padding:0px 14px;
+        }
+    
+div#body {
+/*    display:none;*/
+    width:799px;
+    padding:10px;
+    position:absolute;
+    top:85px;
+    left:141px;
+    clear:both;
+}
+    div#body a { color:#2c3da6; }
+
+    div#body p {
+        margin-bottom:10px;
+        font-size:14px;
+        color:#2f2f2f;
+    }
+    
+    div#body p span a { color:inherit; }
+    
+    div#body span.large { font-size:32px; }
+    div#body span.medium { font-size:22px; }
+    div#body span.small { font-size:12px; }
+    div#body span.red { color:#740000; }
+    div#body span.gray { color:#9e9e9e; }
+    div#body b { font-family:"PF Square Sans Pro Bold", sans-serif; }
+    div#body h2 { color:#740000; font-size:20px; font-family:"PF Square Sans Pro Bold"; }
+
+div#footer-wrapper {
+    min-width:100%;
+    background:rgb(213, 214, 216);
+    height:100px;
+    position:relative;
+    margin-top:-100px;
+}
+
+div#footer {
+    width:960px;
+    height:80px;
+    margin:0 auto;
+    font-size:14px;
+    padding-top:20px;
+    font-family:"PF Square Sans Pro Medium", sans-serif;
+}
+
+    div#footer .links a {
+        color:#750000;
+    }
+    
+    div#footer .copyright { color:#6a6a6a; font-size:11px; }
+
+/***** HOME ******/
+
+body.home .center {
+    width:60%;
+    margin:0 auto;
+    margin-top:60px; 
+    margin-bottom:60px;
+}
+
+body.home .columns {
+    width:100%;
+}
+
+    body.home .columns > div.col { float:left; }
+    body.home .columns.three div { width:259px; }
+    body.home .columns.three > div:first-child { margin-right:11px; }
+    body.home .columns.three > div:last-child { margin-left:11px; }
+    

@@ -1,0 +1,7 @@
+httplib2
+PIL
+south
+django-extensions
+simplejson
+
+-e git+https://github.com/django/django#egg=django
