@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block content %}
+<h1>All Menus</h1>
 <table>
     <thead>
         <tr>
@@ -21,18 +22,14 @@
         </tr>
     </thead>
     <tbody>
+        {% for menu in menus%}
         <tr>
-            <td><img src="/media/menus/photos/thumb/italian.jpeg" width="100" height="70"></td>
-            <td>Italian Dinner</td>
-            <td>5 out of 5</td>
-            <td><a href="detail">View</a></td>
+            <td><img src="{{MEDIA_URL}}{{menu.thumbnail}}" width="100" height="70"></td>
+            <td>{{menu.name}}</td>
+            <td class="rating"><span class="rating" style="width:{{ menu.rating|div:'5' }}%">{{menu.rating}} out of 5</td>
+            <td><a href="menu/{{menu.id}}">View</a></td>
         </tr>
-        <tr>
-            <td><img src="/media/menus/photos/thumb/asian.jpeg" width="100" height="70"></td>
-            <td>Asian Sensation!</td>
-            <td>3 out of 5</td>
-            <td><a href="detail">View</a></td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
 
