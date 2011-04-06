@@ -72,6 +72,21 @@ div#header {
         
             div#top-bar form input { margin-top:-3px; width:312px; height:26px; border:none; background:url('../img/search-bar.png') no-repeat top left; color:white; font-size:14px; padding:0px 45px 0px 10px; }
             div#top-bar form input:focus { outline:none; }
+
+        div.signed-out {
+
+        }
+        div.signed-in {  }
+        div.signed-in img {
+            width:20px;
+            height:20px;
+            border:solid 1px rgb(34, 34, 34);
+            border-radius:5px;
+            float:left;
+            -webkit-border-radius:5px;
+            -moz-border-radius:5px;
+            margin-right:10px;
+        }
     
     div#main-nav {
         clear:both;

@@ -89,7 +89,34 @@ INSTALLED_APPS = (
         
     'django_extensions',
     'south',
+    'social_auth',
 )
+
+#Authentication
+
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.twitter.TwitterBackend',
+    'social_auth.backends.facebook.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+TWITTER_CONSUMER_KEY = 'yM3INdwrsRorYq5P1oGQQ'
+TWITTER_CONSUMER_SECRET = 'lQHuDLGwLfI1X7T6qYpE9ULtoFuX33aKFvLaIn0GeqU'
+
+SOCIAL_AUTH_COMPLETE_URL_NAME  = 'complete'
+SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'associate_complete'
+
+FACEBOOK_APP_ID = '215301415149980'
+FACEBOOK_API_SECRET = '3b1a8bcb808d4599642a67e18638aa8a'
+
+from django.template.defaultfilters import slugify
+SOCIAL_AUTH_USERNAME_FIXER = lambda u: slugify(u)
+FACEBOOK_EXTENDED_PERMISSIONS=['email', ]
+
+LOGIN_URL = '/auth/login/facebook/'
+LOGIN_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE = "cah.CAHProfile"
 
 # CACHE_BACKEND = 'locmem://'
 

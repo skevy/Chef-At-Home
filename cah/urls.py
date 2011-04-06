@@ -10,7 +10,9 @@ urlpatterns = patterns('',
     url(r'^menus/', include('cah.menus.urls')),
     url(r'^meal-plans/', include('cah.meal_plans.urls')),
     url(r'^recipes/', include('cah.recipes.urls')),
-    
+
+    url(r'^account/auth/', include('social_auth.urls')),
+    url(r'^account/logout/', 'cah.views.logout'),
 
     # ADMIN
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -5,3 +5,4 @@ django-extensions
 simplejson
 
 -e git+https://github.com/django/django#egg=django
+-e git+git@github.com:jess3/django-social-auth.git#egg=django-social-auth

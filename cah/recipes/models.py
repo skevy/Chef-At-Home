@@ -1,15 +1,12 @@
 from django.db import models
 
 from django.contrib.auth.models import User
-
-class Menu(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-    
+from cah.menus.models import Menu
 
 class Recipe(models.Model):
     menu = models.ForeignKey(Menu, blank=True, null=True)
     name = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
     user = models.ForeignKey(User)
     rating = models.IntegerField(default=0)
     
