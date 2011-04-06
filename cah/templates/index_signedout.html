@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block content %}
+<div class="center">
+    <p>
+        <b><span class="red large">Chef At Home.</span><span class="black medium">Finding something to eat doesn't have to be hard.</span></b>
+    </p>
+    <p>
+        <a class="login-button facebook-login" href="/account/auth/login/facebook/">Sign in with Facebook</a>
+        <a class="login-button twitter-login" href="/account/auth/login/twitter/">Sign in with Twitter</a>
+    </p>
+    <p>
+        <b><span class="small gray">Don't have Facebook or Twitter? <a href="#">Sign up without.</a></span></b>
+    </p>
+</div>
+<div class="columns three">
+    <div class="col">
+        <h2>Organize recipes in menus</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed adipiscing arcu. Donec et sapien ac quam hendrerit commodo sit amet et purus. Pellentesque mattis, dolor vel congue elementum,</p>
+    </div>
+    <div class="col">
+        <h2>Make a meal plan</h2>
+        <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit. Aliquam sed adipiscing arcu. Donec et sapien ac quam hendrerit commodo sit amet et purus. Pellentesque mattis, dolor vel congue elementum, neque diam elementum odio, quis imper</p>
+    </div>
+    <div class="col">
+        <h2>Share your recipes</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed adipiscing arcu. Donec et sapien ac quam hendrerit commodo sit amet et purus. Pellentesque mattis, dolor vel congue elementum,</p>
+    </div>
+</div>
+{% endblock %}
