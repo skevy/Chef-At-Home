@@ -35,7 +35,7 @@
     <tbody>
     {% for recipe in recipes %}
         <tr>
-            <td><img src="{{ recipe.get_image.thumbnail.url }}" width="100" height="70"></td>
+            <td><a href="{% url recipe_detail recipe.id %}"><img src="{{recipe.get_image.thumbnail.url}}" width="100" height="70"></a></td>
             <td>{{ recipe.name }}</td>
             <td class="rating"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></td>
             <td><a class="recipe-link" href="{% url recipe_detail recipe.id %}">View</a></td>

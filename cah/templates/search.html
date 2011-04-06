@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes{% endblock %}
+
+{% block body_class %}recipes has-table{% endblock %}
+
+{% block main_nav %}
+<li><a href="/recipes/">Recipes</a></li>
+<li><a href="/menus/">Menus</a></li>
+<li><a href="/meal-plans/">Meal Plans</a></li>
+{% endblock %}
+
+{% block content %}
+<h1>Recipes</h1><br />
+
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for recipe in recipes %}
+        <tr>
+            <td><img src="{{ recipe.get_image.thumbnail.url }}" width="100" height="70"></td>
+            <td>{{ recipe.name }}</td>
+            <td class="rating"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></td>
+            <td><a class="recipe-link" href="{% url recipe_detail recipe.id %}">View</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br /><br />
+
+<h1>Menus</h1><br />
+
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for menu in menus %}
+        <tr>
+            <td><img src="{{ menu.get_image.thumbnail.url }}" width="100" height="70"></td>
+            <td>{{ menu.name }}</td>
+            <td class="rating"><span class="rating" style="width:{{ menu.rating|div:'5'|mul:"140" }}px">{{menu.rating}} out of 5</span></td>
+            <td><a class="recipe-link" href="{% url menu_detail menu.id %}">View</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br /><br />
+
+<h1>Meal Plans</h1><br />
+
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for meal_plan in meal_plans %}
+        <tr>
+            <td><img src="{{ meal_plan.get_image.thumbnail.url }}" width="100" height="70"></td>
+            <td>{{ meal_plan.name }}</td>
+            <td class="rating"><span class="rating" style="width:{{ meal_plan.rating|div:'5'|mul:"140" }}px">{{meal_plan.rating}} out of 5</span></td>
+            <td><a class="recipe-link" href="{% url meal_plan_detail meal_plan.id %}">View</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

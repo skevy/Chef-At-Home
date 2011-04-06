@@ -10,17 +10,9 @@
 <li class="active"><a href="/meal-plans/">Meal Plans</a></li>
 {% endblock %}
 
-{% block sidebar %}
-    <h3>Filter by Tag</h3>
-    <ul>
-        {% for tag in all_tags %}
-            <li><a href="{% url meal_plans_by_tag tag.slug %}">{{ tag.name }}</a></li>
-        {% endfor %}
-    </ul>
-{% endblock %}
-
 {% block content %}
-<h1>All Meal Plans</h1>
+<h3><a href="/meal-plans/">Back to Meal Plans</a></h3>
+<h1>Meal Plans in '{{ tag.name }}'</h1>
 <table>
     <thead>
         <tr>
