@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from taggit.models import Tag, TaggedItem
-from cah.recipes.models import Recipe
+from cah.recipes.models import Recipe, Ingredient
 
 def index(request):
     recipes = Recipe.objects.all()
@@ -23,7 +24,34 @@ def detail(request, id):
 
 @login_required
 def add(request):
-    context = {
-        'initial_ingredients':['ingredient1','ingredient2','ingredient3'],
-    }
+    context = {}
+    if request.method == "POST":
+        if request.POST.get('recipe_name', None) and request.POST.get('recipe_description', None) and request.POST.get('directions', None):
+
+            data = {
+                'name': '',
+                'description': '',
+                'user': request.user,
+                'directions': request.POST.directions
+            }
+
+            recipe = Recipe.objects.create(**data)
+            recipe.tags.add(*([t.strip() for t in request.POST['recipe_tags'].split(",")]))
+
+            #ingredients
+            num_ingredients = request.POST['num_ingredients']
+            ingredients = []
+            for t in range(0, num_ingredients):
+                i = Ingredient.objects.create(
+                    recipe=recipe,
+                    quantity=request.POST['ingredient_%d_quantity' % t],
+                    description=request.POST['ingredient_%d_description' % t]
+                )
+
+            return HttpResponseRedirect("/recipes/")
+        else:
+            context['error'] = "Not all fields filled."
+
+    context['initial_ingredients'] = [0, 1, 2, ]
+
     return render(request, "recipes/add_recipe.html", context)

@@ -249,7 +249,7 @@ body.has-table table {
     body.has-table tr:hover td { background-color:#E6E7E8; cursor:pointer; }
     
     /*****RATINGS*******/
-    body.has-table td span.rating {background: url('../img/rating.png') no-repeat 0px 0px;padding: 33px 0px 0px 0px;display: block;text-indent: -100px;overflow: hidden;}
+    span.rating {background: url('../img/rating.png') no-repeat 0px 0px;padding: 33px 0px 0px 0px;display: block;text-indent: -100px;overflow: hidden;}
 	body.has-table th.rating{text-align: center;width: 140px;padding: 0px 110px 0px 0px;}
 	body.has-table td.rating{padding: 10px 110px 0px 0px;}
     
@@ -260,6 +260,10 @@ body.recipes.detail h2 { font-size:22px; color:#750000; margin-bottom:5px; lette
 
 body.recipes.detail div#body .meta p { font-size:16px; }
 body.recipes.detail div#body div { margin-bottom:10px; }
+
+a#add_recipe{display: block;background: url('../img/add_recipe.png') no-repeat;text-indent: -100px;overflow: hidden;width: 210px;height: 45px;margin: 0px 0px 10px 0px;background-position:left bottom;}
+a#add_recipe:hover{background-position:left top; cursor: default;}
+
 
 /*MY FORM STYLING*/
 a#add_to_menu{display: block;background: url('../img/add_to_menu.png') no-repeat;text-indent: -100px;overflow: hidden;width: 193px;height: 40px;margin: 0px 0px 10px 0px;background-position:left bottom;}

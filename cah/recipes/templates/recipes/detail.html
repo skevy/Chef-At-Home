@@ -19,9 +19,9 @@
 <div class="meta">
     <p><b>Tags:</b>
         {% for tag in recipe.tags.all %}
-            <a href="#">{{ tag.name }}</a>, 
+            <a href="{% url recipes_by_tag tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}</p>
-    <p><b>Rating:</b> {{ recipe.rating }} out of 5</p>
+    <p><b>Rating:</b> <span style="width:140px; height:30px; margin-left:10px; display:inline-block; overflow:hidden;"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></span></p>
     <p><b>Description:</b> {{ recipe.description }}</p>
 </div>
 

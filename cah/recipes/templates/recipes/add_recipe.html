@@ -13,18 +13,24 @@
 {% block content %}
 <img class="left" src="/media/recipes/photos/orig/chicken.jpeg" width="400" />
 <h1>Add Your Own Recipe</h1>
-<form name="add_recipe">
+<form method="POST" name="add_recipe">{% csrf_token %}
     <fieldset>
         <legend>Recipe Information</legend>
-        <p>
-            <label for="recipe_photos">Display Name</label>
-            <br />
-            <input type="text" class="title" name="recipe_photos" id="recipe_photos" value="{{user.first_name}} {{user.last_name}}" />
-        </p>
         <p>
             <label for="recipe_name">Recipe Name</label>
             <br />
             <input type="text" class="title" name="recipe_name" id="recipe_name" value="Chicken Marsala" />
+        </p>
+        <p>
+            <label for="recipe_name">Recipe Description</label>
+            <br />
+            <input type="text" class="title" name="recipe_description" id="recipe_description" value="A great recipe!" />
+        </p>
+    </fieldset>
+    <fieldset class="tags clear">
+        <legend>Tags</legend>
+        <p>
+            <input type="text" class="title" name="recipe_tags" id="recipe_tags" value="chicken,awesome" />
         </p>
     </fieldset>
     
@@ -35,6 +41,7 @@
             <label for="ingredient_{{forloop.counter}}">Ingredient {{forloop.counter}}</label>
             <br>
             <input type="text" class="title" name="ingredient_{{forloop.counter}}" id="ingredient_{{forloop.counter}}" value="{% if forloop.counter == 1%}Enter first ingredient...{% endif %}{% if forloop.counter > 1 %}And another ingredient...{% endif %}" />
+            <input type="text" style="margin-left:20px; width:170px;" class="title" name="ingredient_{{forloop.counter}}_quantity" id="ingredient_{{forloop.counter}}_quantity" value="Enter quantity..." />
         </p>
         {% endfor %}
     </fieldset>
@@ -66,7 +73,7 @@
             <input type="file" class="title" name="recipe_photos" id="recipe_photos" value="" />
         </p>
         <p>
-            <a href="http://www.google.com" id="add_to_menu">Add To Menu</a>
+            <a href="javascript:;" id="add_to_menu">Add To Menu</a>
             <div class="hidden">
                 <div class="lightbox">
                     <select class="menu_selector">
