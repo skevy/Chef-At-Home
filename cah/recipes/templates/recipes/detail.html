@@ -12,16 +12,22 @@
 
 {% block content %}
 <h3><a href="/recipes/">Back to Recipes</a></h3>
-<img class="left" src="{{ recipe.get_image.orig_photo.url }}" width="400" />
+    {% if recipe.get_image %}
+    <img class="left" src="{{ recipe.get_image.orig_photo.url }}" width="400" />
+    {% endif %}
 <a id="add_to_menu" href="add">Add To Menu</a>
 <h1>{{ recipe.name }}</h1>
 
 <div class="meta">
+    <p><b>Author: </b> {{ recipe.user.get_full_name }}</p>
     <p><b>Tags:</b>
         {% for tag in recipe.tags.all %}
             <a href="{% url recipes_by_tag tag.slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}</p>
-    <p><b>Rating:</b> <span style="width:140px; height:30px; margin-left:10px; display:inline-block; overflow:hidden;"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></span></p>
+    <p><b>Rating:</b> <span style="width:140px; height:30px; margin-left:10px; display:inline-block; overflow:hidden;">{% if recipe.rating != 0 %}
+    <span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span>
+    {% else %}Not yet rated.
+    {% endif %}</span></p>
     <p><b>Description:</b> {{ recipe.description }}</p>
 </div>
 

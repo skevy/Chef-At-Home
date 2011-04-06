@@ -29,10 +29,10 @@ def add(request):
         if request.POST.get('recipe_name', None) and request.POST.get('recipe_description', None) and request.POST.get('directions', None):
 
             data = {
-                'name': '',
-                'description': '',
+                'name': request.POST['recipe_name'],
+                'description': request.POST['recipe_description'],
                 'user': request.user,
-                'directions': request.POST.directions
+                'directions': request.POST['directions']
             }
 
             recipe = Recipe.objects.create(**data)
@@ -41,11 +41,11 @@ def add(request):
             #ingredients
             num_ingredients = request.POST['num_ingredients']
             ingredients = []
-            for t in range(0, num_ingredients):
+            for t in range(0, int(num_ingredients)):
                 i = Ingredient.objects.create(
                     recipe=recipe,
-                    quantity=request.POST['ingredient_%d_quantity' % t],
-                    description=request.POST['ingredient_%d_description' % t]
+                    quantity=request.POST['ingredient_%s_quantity' % (t+1)],
+                    description=request.POST['ingredient_%s' % (t+1)]
                 )
 
             return HttpResponseRedirect("/recipes/")
