@@ -1,4 +1,7 @@
-/* @override http://127.0.0.1:8001/static/css/main.css */
+/* @override 
+	http://127.0.0.1:8001/static/css/main.css
+	http://chefathome.dev:8001/static/css/main.css
+*/
 
 @font-face { font-family: 'PF Square Sans Pro Bold'; src: url('../fonts/pfsquaresanspro-bold-webfont.eot'); }
 @font-face { font-family: 'PF Square Sans Pro Bold'; src: url("//:") format("no404"), url('../static/fonts/pfsquaresanspro-bold-webfont.woff') format('woff'), url('../fonts/pfsquaresanspro-bold-webfont.ttf') format('truetype'), url('../fonts/pfsquaresanspro-bold-webfont.svg#svgSquareSans') format('svg'); }
@@ -238,7 +241,10 @@ body.has-table table {
         padding-bottom:5px;
     }
 
-    body.has-table th.image { width:102px; }
+    body.has-table th.image { width:102px;}
+    body.has-table td img{
+		margin-top: 10px;
+	}
 
     body.has-table td {
         text-align:left;
@@ -251,7 +257,7 @@ body.has-table table {
     /*****RATINGS*******/
     body.has-table td span.rating {background: url('../img/rating.png') no-repeat 0px 0px;padding: 33px 0px 0px 0px;display: block;text-indent: -100px;overflow: hidden;}
 	body.has-table th.rating{text-align: center;width: 140px;padding: 0px 110px 0px 0px;}
-	body.has-table td.rating{padding: 10px 110px 0px 0px;}
+	body.has-table td.rating{padding: 24px 110px 0px 0px;}
     
 /***** RECIPES *****/
 
@@ -294,5 +300,18 @@ form.inline p {margin-bottom:0;}
 .notice a {color:#514721;}
 .success a {color:#264409;}
 .info a {color:#205791;}
-
-
+form fieldset p{position: relative;}
+form fieldset p span{position: absolute;z-index: 100;top: 35px; right:40px;display: block; height: 30px;width: 25px;background-image: url('../img/form_validation.png');overflow: hidden;text-indent: -900px;}
+.LV_validation_message{font-weight:bold;margin:0 0 0 5px;}
+.LV_valid {color:#00CC00;background-position: right;}
+.LV_invalid {color:#a60101;}
+.LV_valid_field,
+input.LV_valid_field:hover, 
+input.LV_valid_field:active,
+textarea.LV_valid_field:hover, 
+textarea.LV_valid_field:active {border: 1px solid #117500;}
+.LV_invalid_field, 
+input.LV_invalid_field:hover, 
+input.LV_invalid_field:active,
+textarea.LV_invalid_field:hover, 
+textarea.LV_invalid_field:active {border: 1px solid #a60101;}

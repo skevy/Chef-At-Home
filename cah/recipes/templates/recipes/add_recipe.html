@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block extra_head %}<script src="/static/js/live-validation.min.js" type="text/javascript" charset="utf-8"></script>{% endblock %}
 {% block title %}Add Recipe{% endblock %}
 
 {% block body_class %}recipes{% endblock %}
@@ -11,20 +11,32 @@
 {% endblock %}
 
 {% block content %}
-<img class="left" src="/media/recipes/photos/orig/chicken.jpeg" width="400" />
+<img class="left" src="/static/img/example_image.png" width="400" />
 <h1>Add Your Own Recipe</h1>
 <form name="add_recipe">
     <fieldset>
         <legend>Recipe Information</legend>
         <p>
-            <label for="recipe_photos">Display Name</label>
+            <label for="author_name">Author Name</label>
             <br />
-            <input type="text" class="title" name="recipe_photos" id="recipe_photos" value="{{user.first_name}} {{user.last_name}}" />
+            <input type="text" class="title" name="author_name" id="author_name" value="{{user.first_name}} {{user.last_name}}" />
+            <p>
+            <script>
+            var author_name = new LiveValidation('author_name');
+            author_name.add( Validate.Presence );
+            </script>
+            </p>
         </p>
         <p>
             <label for="recipe_name">Recipe Name</label>
             <br />
             <input type="text" class="title" name="recipe_name" id="recipe_name" value="Chicken Marsala" />
+            <p>
+            <script>
+            var recipe_name = new LiveValidation('recipe_name');
+            recipe_name.add( Validate.Presence );
+            </script>
+            </p>
         </p>
     </fieldset>
     
@@ -35,6 +47,12 @@
             <label for="ingredient_{{forloop.counter}}">Ingredient {{forloop.counter}}</label>
             <br>
             <input type="text" class="title" name="ingredient_{{forloop.counter}}" id="ingredient_{{forloop.counter}}" value="{% if forloop.counter == 1%}Enter first ingredient...{% endif %}{% if forloop.counter > 1 %}And another ingredient...{% endif %}" />
+            <p>
+            <script>
+            var ingredient_{{forloop.counter}} = new LiveValidation('ingredient_{{forloop.counter}}');
+            ingredient_{{forloop.counter}}.add( Validate.Presence );
+            </script>
+            </p>
         </p>
         {% endfor %}
     </fieldset>
@@ -44,6 +62,12 @@
             <label for="directions">Directions</label>
             <br />
             <textarea name="directions" id="directions" rows="5" cols="20"></textarea>
+            <p>
+            <script>
+            var directions = new LiveValidation('directions');
+            directions.add( Validate.Presence );
+            </script>
+            </p>
         </p>
         <p>
             <em>Example</em>

@@ -4,7 +4,9 @@
     <title>Chef At Home :: {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/main.css" type="text/css" media="screen" title="no title" charset="utf-8">
     <script src="/static/js/modernizr-1.7.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <script src="/static/js/cah.js" type="text/javascript" charset="utf-8"></script>
+    {% block extra_head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
     <div id="page">
