@@ -13,8 +13,9 @@ def index(request):
     return render(request, "recipes/index.html", { 'recipes': recipes, 'all_tags': tags })
 
 def by_tag(request, slug):
+    tag = Tag.objects.get(slug=slug)
     recipes = Recipe.objects.filter(tags__slug=slug)
-    return render(request, "recipes/by_tag.html", { 'recipes': recipes })
+    return render(request, "recipes/by_tag.html", { 'recipes': recipes, 'tag': tag })
     
 def detail(request, id):
     recipe = Recipe.objects.get(pk=id)
