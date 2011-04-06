@@ -8,7 +8,7 @@ class Menu(models.Model):
     
 
 class Recipe(models.Model):
-    menu = models.ForeignKey(Menu)
+    menu = models.ForeignKey(Menu, blank=True, null=True)
     name = models.CharField(max_length=200)
     user = models.ForeignKey(User)
     rating = models.IntegerField(default=0)
@@ -31,5 +31,5 @@ class RecipeVideo(RecipeMedia):
     
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, related_name="ingredients")
-    quantity = models.CharField(max_length=200)
-    name = models.CharField(max_length=200)
+    quantity = models.CharField(max_length=200, blank=True, null=True)
+    description = models.CharField(max_length=200)
