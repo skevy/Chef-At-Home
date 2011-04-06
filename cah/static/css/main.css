@@ -158,7 +158,7 @@ div#body {
     div#body h2 { color:#740000; font-size:20px; }
     
     div#body img { border:solid 1px #BFBFBF; margin-bottom:10px; }
-    div#body img.left { margin-right:10px; }
+    div#body img.left { margin-right:10px;margin-top: 5px; }
     div#body img.right { margin-left:10px; }
     
     div#body ul li {
@@ -254,8 +254,10 @@ body.recipes.detail div#body .meta p { font-size:16px; }
 body.recipes.detail div#body div { margin-bottom:10px; }
 
 /*MY FORM STYLING*/
-a#add_to_menu{display: block;background: url('../img/add_to_menu.png') no-repeat;text-indent: -100px;overflow: hidden;width: 193px;height: 40px;}
-a#add_to_menu:hover{background-position:left bottom;cursor: default;}
+a#add_to_menu{display: block;background: url('../img/add_to_menu.png') no-repeat;text-indent: -100px;overflow: hidden;width: 193px;height: 40px;margin: 0px 0px 10px 0px;background-position:left bottom;}
+a#add_to_menu:hover{background-position:left top;cursor: default;}
+a#add_to_meal_plan{display: block;background: url('../img/add_to_meal_plan.png') no-repeat;text-indent: -100px;overflow: hidden;width: 234px;height: 40px;margin: -6px 0px 10px 0px;background-position:left bottom;}
+a#add_to_meal_plan:hover{background-position:left top;cursor: default;}
 div#body form fieldset p em{font-weight: bold; font-size: 20px;}
 
 
