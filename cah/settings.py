@@ -83,13 +83,14 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     
     'cah',
-    'cah.recipes',
-    'cah.menus',
     'cah.meal_plans',
+    'cah.menus',
+    'cah.recipes',
         
     'django_extensions',
     'south',
     'social_auth',
+    'taggit',
 )
 
 #Authentication
@@ -113,7 +114,7 @@ from django.template.defaultfilters import slugify
 SOCIAL_AUTH_USERNAME_FIXER = lambda u: slugify(u)
 FACEBOOK_EXTENDED_PERMISSIONS=['email', ]
 
-LOGIN_URL = '/auth/login/facebook/'
+LOGIN_URL = '/account/auth/login/facebook/'
 LOGIN_REDIRECT_URL = '/'
 
 AUTH_PROFILE_MODULE = "cah.CAHProfile"

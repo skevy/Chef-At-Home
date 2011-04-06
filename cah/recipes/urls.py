@@ -5,6 +5,7 @@ from django.http import HttpResponse
 
 urlpatterns = patterns('cah.recipes.views',
     url(r'^$', 'index'),
-    url(r'^2/$', 'detail'),
+    url(r'^(?P<id>\d+)/$', 'detail', name="recipe_detail"),
+    url(r'^tags/(?P<slug>[\w\-]+)/$', 'by_tag', name="recipes_by_tag"),
     url(r'^add/$', 'add'),
 )
