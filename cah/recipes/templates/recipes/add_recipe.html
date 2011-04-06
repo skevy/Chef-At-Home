@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block extra_head %}<script src="/static/js/live-validation.min.js" type="text/javascript" charset="utf-8"></script>{% endblock %}
 {% block title %}Add Recipe{% endblock %}
 
 {% block body_class %}recipes{% endblock %}
@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<img class="left" src="/media/recipes/photos/orig/chicken.jpeg" width="400" />
+<img class="left" src="/static/img/example_image.png" width="400" />
 <h1>Add Your Own Recipe</h1>
 <form method="POST" name="add_recipe">{% csrf_token %}
     <fieldset>
@@ -20,30 +20,50 @@
             <label for="recipe_name">Recipe Name</label>
             <br />
             <input type="text" class="title" name="recipe_name" id="recipe_name" value="Chicken Marsala" />
+            <script>
+            var recipe_name = new LiveValidation('recipe_name');
+            recipe_name.add( Validate.Presence );
+            </script>
         </p>
         <p>
             <label for="recipe_name">Recipe Description</label>
             <br />
             <input type="text" class="title" name="recipe_description" id="recipe_description" value="A great recipe!" />
+            <script>
+            var recipe_description = new LiveValidation('recipe_description');
+            recipe_description.add( Validate.Presence );
+            </script>
         </p>
     </fieldset>
     <fieldset class="tags clear">
         <legend>Tags</legend>
         <p>
             <input type="text" class="title" name="recipe_tags" id="recipe_tags" value="chicken,awesome" />
+            <script>
+            var recipe_tags = new LiveValidation('recipe_tags');
+            recipe_tags.add( Validate.Presence );
+            </script>
         </p>
     </fieldset>
     
     <fieldset class="ingredients clear">
         <legend>Ingredients</legend>
+        <input type="hidden" name="num_ingredients" id="num_ingredients" value="{{ initial_ingredients|length }}" />
         {% for ingredient in initial_ingredients %}
         <p>
             <label for="ingredient_{{forloop.counter}}">Ingredient {{forloop.counter}}</label>
             <br>
             <input type="text" class="title" name="ingredient_{{forloop.counter}}" id="ingredient_{{forloop.counter}}" value="{% if forloop.counter == 1%}Enter first ingredient...{% endif %}{% if forloop.counter > 1 %}And another ingredient...{% endif %}" />
+
             <input type="text" style="margin-left:20px; width:170px;" class="title" name="ingredient_{{forloop.counter}}_quantity" id="ingredient_{{forloop.counter}}_quantity" value="Enter quantity..." />
+
+            <script>
+            var ingredient_{{forloop.counter}} = new LiveValidation('ingredient_{{forloop.counter}}');
+            ingredient_{{forloop.counter}}.add( Validate.Presence );
+            </script>
         </p>
         {% endfor %}
+        <a class="add-another" href="javascript:;">+ Add Another Ingredient</a>
     </fieldset>
     <fieldset>
         <legend>Directions</legend>
@@ -51,6 +71,11 @@
             <label for="directions">Directions</label>
             <br />
             <textarea name="directions" id="directions" rows="5" cols="20"></textarea>
+            
+            <script>
+            var directions = new LiveValidation('directions');
+            directions.add( Validate.Presence );
+            </script>
         </p>
         <p>
             <em>Example</em>
@@ -65,26 +90,26 @@
         </p>
     </fieldset>
     
-    <fieldset>
-        <legend>Optional Information</legend>
-        <p>
-            <label for="recipe_photos">Upload Photos</label>
-            <br />
-            <input type="file" class="title" name="recipe_photos" id="recipe_photos" value="" />
-        </p>
-        <p>
-            <a href="javascript:;" id="add_to_menu">Add To Menu</a>
-            <div class="hidden">
-                <div class="lightbox">
-                    <select class="menu_selector">
-                        {% for menu in user.menus  %}
-                            <option value="{{menu.title}}">{{menu.title}}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-            </div>
-        </p>
-    </fieldset>
+{#    <fieldset>#}
+{#        <legend>Optional Information</legend>#}
+{#        <p>#}
+{#            <label for="recipe_photos">Upload Photos</label>#}
+{#            <br />#}
+{#            <input type="file" class="title" name="recipe_photos" id="recipe_photos" value="" />#}
+{#        </p>#}
+{#        <p>#}
+{#            <a href="javascript:;" id="add_to_menu">Add To Menu</a>#}
+{#            <div class="hidden">#}
+{#                <div class="lightbox">#}
+{#                    <select class="menu_selector">#}
+{#                        {% for menu in user.menus  %}#}
+{#                            <option value="{{menu.title}}">{{menu.title}}</option>#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+{#                </div>#}
+{#            </div>#}
+{#        </p>#}
+{#    </fieldset>#}
 
     <input type="submit" name="submit" class="submit" value="Submit"/>
 
