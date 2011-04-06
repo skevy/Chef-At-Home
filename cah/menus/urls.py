@@ -5,4 +5,5 @@ from django.http import HttpResponse
 
 urlpatterns = patterns('cah.menus.views',
     url(r'^$', 'index'),
+    url(r'^detail/$', 'detail'),
 )
