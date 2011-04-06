@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Meal Plan - Detail{% endblock %}
+
+{% block body_class %}meal-plan detail has-table{% endblock %}
+
+{% block main_nav %}
+<li><a href="/recipes/">Recipes</a></li>
+<li><a href="/menus/">Menus</a></li>
+<li class="active"><a href="/meal-plans/">Meal Plans</a></li>
+{% endblock %}
+
+{% block content %}
+<h3><a href="/meal-plans/">Back to Meal Plans</a></h3>
+<h1 class="left">{{meal_plan.name}}</h1>
+<table>
+    <thead>
+        <tr>
+            <th class="image" scope="col">Image</th>
+            <th class="name" scope="col">Name</th>
+            <th class="rating" scope="col">Rating</th>
+            <th class="view" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in meal_plan.menus.all  %}
+            <tr>
+                <td><a href="{% url menu_detail menu.id %}"><img src="{{ menu.get_image.thumbnail.url }}" width="100" height="70"></a></td>
+                <td>{{menu.name}}</td>
+                <td class="rating"><span class="rating" style="width:{{ menu.rating|div:'5'|mul:"140" }}px">{{menu.rating}} out of 5</span></td>
+                <td><a href="{% url menu_detail menu.id %}">View</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

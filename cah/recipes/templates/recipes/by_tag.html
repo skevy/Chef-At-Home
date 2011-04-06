@@ -10,18 +10,9 @@
 <li><a href="/meal-plans/">Meal Plans</a></li>
 {% endblock %}
 
-{% block sidebar %}
-{#    <h3>Filter by Tag</h3>#}
-{#    <ul>#}
-{#        {% for tag in all_tags %}#}
-{#            <li><a href="/recipes/tags/{{ tag.slug }}/">{{ tag.name }}</a></li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
-{% endblock %}
-
 {% block content %}
-
-<h1>Recipes for {{ tag.name }}</h1>
+<h3><a href="/recipes/">Back to Recipes</a></h3>
+<h1>Recipes in '{{ tag.name }}'</h1>
 
 <table>
     <thead>
@@ -35,7 +26,7 @@
     <tbody>
     {% for recipe in recipes %}
         <tr>
-            <td><img src="{{ recipe.get_image.thumbnail.url }}" width="100" height="70"></td>
+            <td><a href="{% url recipe_detail recipe.id %}"><img src="{{recipe.get_image.thumbnail.url}}" width="100" height="70"></a></td>
             <td>{{ recipe.name }}</td>
             <td class="rating"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></td>
             <td><a class="recipe-link" href="{% url recipe_detail recipe.id %}">View</a></td>
