@@ -10,7 +10,17 @@
 <li><a href="/meal-plans/">Meal Plans</a></li>
 {% endblock %}
 
+{% block sidebar %}
+    <h3>Filter by Tag</h3>
+    <ul>
+        {% for tag in all_tags %}
+            <li><a href="/menus/tags/{{ tag.slug }}/">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
 {% block content %}
+<h1>All Menus</h1>
 <table>
     <thead>
         <tr>
@@ -25,7 +35,7 @@
         <tr>
             <td><img src="{{ menu.get_image.thumbnail.url }}" width="100" height="70"></td>
             <td>{{ menu.name }}</td>
-            <td>{{ menu.rating }} out of 5</td>
+            <td class="rating"><span class="rating" style="width:{{ menu.rating|div:'5' }}%">{{menu.rating}} out of 5</td>
             <td><a href="{% url menu_detail menu.pk %}">View</a></td>
         </tr>
     {% endfor %}

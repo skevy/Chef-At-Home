@@ -248,6 +248,11 @@ body.has-table table {
     
     body.has-table tr:hover td { background-color:#E6E7E8; cursor:pointer; }
     
+    /*****RATINGS*******/
+    body.has-table td span.rating {background: url('../img/rating.png') no-repeat 0px 0px;padding: 33px 0px 0px 0px;display: block;text-indent: -100px;overflow: hidden;}
+	body.has-table th.rating{text-align: center;width: 140px;padding: 0px 110px 0px 0px;}
+	body.has-table td.rating{padding: 10px 110px 0px 0px;}
+    
 /***** RECIPES *****/
 
 body.recipes.detail h1 { font-size:30px; color:#750000; }
@@ -287,3 +292,5 @@ form.inline p {margin-bottom:0;}
 .notice a {color:#514721;}
 .success a {color:#264409;}
 .info a {color:#205791;}
+
+

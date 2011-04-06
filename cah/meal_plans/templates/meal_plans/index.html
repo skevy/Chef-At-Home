@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-
+<h1>All Meal Plans</h1>
 <table>
     <thead>
         <tr>
@@ -22,12 +22,14 @@
         </tr>
     </thead>
     <tbody>
+        {% for meal_plan in meal_plans  %}
         <tr>
-            <td><img src="/media/meal_plans/photos/thumb/protein.jpeg" width="100" height="70"></td>
-            <td>Protein Protein Protein!!</td>
-            <td>5 out of 5</td>
-            <td><a href="#">View</a></td>
+            <td><img src="{{MEDIA_URL}}{{meal_plan.thumbnail}}" width="100" height="70"></td>
+            <td>{{meal_plan.name}}</td>
+            <td class="rating"><span class="rating" style="width:{{ meal_plan.rating|div:'5' }}%">{{meal_plan.rating}} out of 5</td>
+            <td><a href="menu/{{meal_plan.id}}">View</a></td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 
