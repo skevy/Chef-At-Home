@@ -14,15 +14,15 @@
                     {% if user.is_authenticated %}
                     <div class="signed-in">
                         <img src="{{ user.get_profile.avatar }}" />
-                        <a href="/account/">Account</a>
+{#                        <a href="/account/">Account</a>#}
                         <a href="/account/logout/">Sign Out</a>
                     </div>
                     {% else %}
                     <div class="signed-out">
                         <a class="login-button facebook-login" href="/account/auth/login/facebook/">Sign in with Facebook</a>
                         <a class="login-button twitter-login" href="/account/auth/login/twitter/">Sign in with Twitter</a>
-                        <a href="#">Sign in</a>
-                        <a href="#">Sign up</a>
+{#                        <a href="#">Sign in</a>#}
+{#                        <a href="#">Sign up</a>#}
                     </div>
                     {% endif %}
 
