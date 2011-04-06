@@ -13,8 +13,9 @@
 {% block content %}
 
 <img class="left" src="{{ recipe.get_image.orig_photo.url }}" width="400" />
-
+<a id="add_to_menu" href="add">Add To Menu</a>
 <h1>{{ recipe.name }}</h1>
+
 <div class="meta">
     <p><b>Tags:</b>
         {% for tag in recipe.tags.all %}
@@ -23,6 +24,7 @@
     <p><b>Rating:</b> {{ recipe.rating }} out of 5</p>
     <p><b>Description:</b> {{ recipe.description }}</p>
 </div>
+
 <div class="ingredients clear">
     <h2>Ingredients</h2>
     <ul>
