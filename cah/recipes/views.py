@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from taggit.models import Tag, TaggedItem
 from cah.recipes.models import Recipe, Ingredient
+from cah.utils import paginate
 
 def index(request):
     recipes = Recipe.objects.all()
@@ -11,12 +12,13 @@ def index(request):
     for t in tagged_items:
         tags.append(t.tag)
     tags = set(tags)
-    return render(request, "recipes/index.html", { 'recipes': recipes, 'all_tags': tags })
+
+    return render(request, "recipes/index.html", { 'recipes': paginate(request, recipes), 'all_tags': tags })
 
 def by_tag(request, slug):
     tag = Tag.objects.get(slug=slug)
     recipes = Recipe.objects.filter(tags__slug=slug)
-    return render(request, "recipes/by_tag.html", { 'recipes': recipes, 'tag': tag })
+    return render(request, "recipes/by_tag.html", { 'recipes': paginate(request, recipes), 'tag': tag })
     
 def detail(request, id):
     recipe = Recipe.objects.get(pk=id)

@@ -31,7 +31,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for menu in menus %}
+    {% for menu in menus.object_list %}
         <tr>
             <td><a href="{% url menu_detail menu.pk %}"><img src="{{ menu.get_image.thumbnail.url }}" width="100" height="70"></a></td>
             <td>{{ menu.name }}</td>
@@ -41,5 +41,21 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if menus.has_previous %}
+            <a href="?page={{ menus.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ menus.number }} of {{ menus.paginator.num_pages }}.
+        </span>
+
+        {% if menus.has_next %}
+            <a href="?page={{ menus.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}

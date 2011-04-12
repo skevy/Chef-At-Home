@@ -32,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-    {% for recipe in recipes %}
+    {% for recipe in recipes.object_list %}
         <tr>
             <td><a href="{% url recipe_detail recipe.id %}"><img src="{{recipe.get_image.thumbnail.url}}" width="100" height="70"></a></td>
             <td>{{ recipe.name }}</td>
@@ -42,6 +42,22 @@
     {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if recipes.has_previous %}
+            <a href="?page={{ recipes.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ recipes.number }} of {{ recipes.paginator.num_pages }}.
+        </span>
+
+        {% if recipes.has_next %}
+            <a href="?page={{ recipes.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 
 
 {% endblock %}

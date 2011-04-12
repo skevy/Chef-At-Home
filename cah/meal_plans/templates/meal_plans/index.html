@@ -31,7 +31,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for meal_plan in meal_plans  %}
+        {% for meal_plan in meal_plans.object_list %}
         <tr>
             <td><a href="{% url meal_plan_detail meal_plan.id %}"><img src="{{meal_plan.get_image.thumbnail.url}}" width="100" height="70"></a></td>
             <td>{{meal_plan.name}}</td>
@@ -41,5 +41,21 @@
         {% endfor %}
     </tbody>
 </table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if meal_plans.has_previous %}
+            <a href="?page={{ meal_plans.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ meal_plans.number }} of {{ meal_plans.paginator.num_pages }}.
+        </span>
+
+        {% if meal_plans.has_next %}
+            <a href="?page={{ meal_plans.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}
