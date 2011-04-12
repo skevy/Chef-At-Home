@@ -9,21 +9,29 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'CAHProfile'
-        db.create_table('cah_cahprofile', (
+        db.create_table('accounts_cahprofile', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('avatar', self.gf('django.db.models.fields.URLField')(max_length=1000)),
+            ('service', self.gf('django.db.models.fields.CharField')(max_length=100)),
         ))
-        db.send_create_signal('cah', ['CAHProfile'])
+        db.send_create_signal('accounts', ['CAHProfile'])
 
 
     def backwards(self, orm):
         
         # Deleting model 'CAHProfile'
-        db.delete_table('cah_cahprofile')
+        db.delete_table('accounts_cahprofile')
 
 
     models = {
+        'accounts.cahprofile': {
+            'Meta': {'object_name': 'CAHProfile'},
+            'avatar': ('django.db.models.fields.URLField', [], {'max_length': '1000'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'service': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
         'auth.group': {
             'Meta': {'object_name': 'Group'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -53,12 +61,6 @@ class Migration(SchemaMigration):
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
             'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
         },
-        'cah.cahprofile': {
-            'Meta': {'object_name': 'CAHProfile'},
-            'avatar': ('django.db.models.fields.URLField', [], {'max_length': '1000'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
-        },
         'contenttypes.contenttype': {
             'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
             'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
@@ -68,4 +70,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['cah']
+    complete_apps = ['accounts']

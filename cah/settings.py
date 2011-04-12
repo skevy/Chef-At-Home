@@ -81,11 +81,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.humanize',
-    
+
     'cah',
     'cah.meal_plans',
     'cah.menus',
     'cah.recipes',
+    'cah.accounts',
         
     'django_extensions',
     'south',
@@ -117,7 +118,7 @@ FACEBOOK_EXTENDED_PERMISSIONS=['email', ]
 LOGIN_URL = '/account/auth/login/facebook/'
 LOGIN_REDIRECT_URL = '/'
 
-AUTH_PROFILE_MODULE = "cah.CAHProfile"
+AUTH_PROFILE_MODULE = "cah.accounts.CAHProfile"
 
 # CACHE_BACKEND = 'locmem://'
 
