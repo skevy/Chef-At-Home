@@ -14,9 +14,10 @@
 <h3><a href="/recipes/">Back to Recipes</a></h3>
 <h1>Recipes in '{{ tag.name }}'</h1>
 
-<table>
+<table data-itemtype="recipes.recipe">
     <thead>
         <tr>
+            {% if user.is_authenticated %}<th class="favorite" scope="col">Favorite</th>{% endif %}
             <th class="image" scope="col">Image</th>
             <th class="name" scope="col">Name</th>
             <th class="rating" scope="col">Rating</th>
@@ -25,7 +26,8 @@
     </thead>
     <tbody>
     {% for recipe in recipes.object_list %}
-        <tr>
+        <tr data-id="{{ recipe.pk }}">
+            {% if user.is_authenticated %}<td><a class="favorite" href="javascript:;">Favorite</a></td>{% endif %}
             <td><a href="{% url recipe_detail recipe.id %}"><img src="{{recipe.get_image.thumbnail.url}}" width="100" height="70"></a></td>
             <td>{{ recipe.name }}</td>
             <td class="rating"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></td>

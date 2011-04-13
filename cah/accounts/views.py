@@ -10,10 +10,23 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, render
 from django.template.context import RequestContext
 from cah.accounts.models import FavoriteItem
+from cah.meal_plans.models import MealPlan
+from cah.menus.models import Menu
+from cah.recipes.models import Recipe
 from cah.utils.json import JSONResponse
 
+@login_required
 def index(request):
-    pass
+#
+#    recipes = set(Recipe.objects.filter(Q(name__icontains=q) | Q(description__icontains=q) | Q(tags__name__icontains=q)))
+#    menus = set(Menu.objects.filter(Q(name__icontains=q) | Q(description__icontains=q) | Q(tags__name__icontains=q)))
+#    meal_plans = set(MealPlan.objects.filter(Q(name__icontains=q) | Q(description__icontains=q) | Q(tags__name__icontains=q)))
+#
+#    return render(request, 'accounts/index.html', { 'recipes': recipes, 'menus': menus, 'meal_plans': meal_plans })
+    recipes = Recipe.objects.filter(favorited__user=request.user)
+    menus = Menu.objects.filter(favorited__user=request.user)
+    meal_plans = MealPlan.objects.filter(favorited__user=request.user)
+    return render(request, 'accounts/index.html', { 'recipes': recipes, 'menus': menus, 'meal_plans': meal_plans })
 
 def signup(request):
     if request.method == 'POST':

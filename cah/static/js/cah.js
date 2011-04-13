@@ -61,27 +61,30 @@ $(document).ready(function() {
 
         //get all favorited items (ids), then just loop through and add the class, pretty simple
 
-        var url = "";
-        if($('body').hasClass('recipes')) {
-            url = "/recipes/favorites/";
-        } else if($('body').hasClass('menus')) {
-            url = "/menus/favorites/";
-        } else if($('body').hasClass('meal-plans')) {
-            url = "/meal-plans/favorites/";
-        }
+        $('table').each(function(i, t) {
+            var $this = $(t);
+            var url = "";
+            if($this.attr('data-itemtype') == 'recipes.recipe') {
+                url = "/recipes/favorites/";
+            } else if($this.attr('data-itemtype') == 'menus.menu') {
+                url = "/menus/favorites/";
+            } else if($this.attr('data-itemtype') == 'meal_plans.mealplan') {
+                url = "/meal-plans/favorites/";
+            }
 
-        if(url != "") {
-            $.ajax({
-                type: 'GET',
-                url: url,
-                dataType: 'json',
-                success: function(response) {
-                    $.each(response.items, function(i, item) {
-                        $("tr[data-id=" + item + "] a.favorite").addClass('active');
-                    });
-                }
-            });   
-        }
+            if(url != "") {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    dataType: 'json',
+                    success: function(response) {
+                        $.each(response.items, function(i, item) {
+                            $this.find("tr[data-id=" + item + "] a.favorite").addClass('active');
+                        });
+                    }
+                });
+            }
+        });
     }
 
 

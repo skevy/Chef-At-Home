@@ -1,7 +1,8 @@
 from django.db import models
-
+from django.contrib.contenttypes import generic
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from cah.accounts.models import FavoriteItem
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200)
@@ -9,6 +10,7 @@ class Recipe(models.Model):
     tags = TaggableManager()
     user = models.ForeignKey(User)
     rating = models.IntegerField(default=0)
+    favorited = generic.GenericRelation(FavoriteItem)
     
     directions = models.TextField()
 
