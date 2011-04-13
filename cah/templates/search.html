@@ -11,6 +11,10 @@
 {% endblock %}
 
 {% block content %}
+{% if not recipes and not menus and not meal_plans %}
+No results found.
+{% endif %}
+
 {% if recipes %}
 <h1>Recipes</h1><br />
 
