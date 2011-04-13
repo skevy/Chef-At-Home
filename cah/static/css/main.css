@@ -326,4 +326,4 @@ input.LV_invalid_field:active,
 textarea.LV_invalid_field:hover, 
 textarea.LV_invalid_field:active {border: 1px solid #a60101;}
 
-body.signup-form form img{border: none;}
+#body form img{border: none;}
