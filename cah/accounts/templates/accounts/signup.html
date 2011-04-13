@@ -11,7 +11,9 @@
 {% endblock %}
 
 {% block content %}
+    
     <form method="POST" action="/account/signup/">{% csrf_token %}
+        <img src="{{STATIC_URL}}img/form_header.png" />
         {{ form.as_p }}
         <input type="submit" value="Sign Up!" />
     </form>
