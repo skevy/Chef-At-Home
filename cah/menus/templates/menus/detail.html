@@ -20,6 +20,7 @@
             <th class="name" scope="col">Name</th>
             <th class="rating" scope="col">Rating</th>
             <th class="view" scope="col"></th>
+            {% if can_delete %}<th class="delete" scope="col"></th>{% endif %}
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,7 @@
                 <td>{{recipe.name}}</td>
                 <td class="rating"><span class="rating" style="width:{{ recipe.rating|div:'5'|mul:"140" }}px">{{recipe.rating}} out of 5</span></td>
                 <td><a href="{% url recipe_detail recipe.id %}">View</a></td>
+                {% if can_delete %}<td><a href="{% url menu_remove_recipe menu.id recipe.id %}">Remove From Menu</a></td>{% endif %}
             </tr>
         {% endfor %}
     </tbody>

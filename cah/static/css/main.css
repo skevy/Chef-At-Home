@@ -339,3 +339,21 @@ textarea.LV_invalid_field:hover,
 textarea.LV_invalid_field:active {border: 1px solid #a60101;}
 
 #body form img{border: none;}
+
+.add-to-menu-menu {
+    width:200px;
+    background:#EFEFEF;
+    position:absolute;
+    top:162px;
+    left:150px;
+    padding-top:6px;
+}
+
+    .add-to-menu-menu ul {
+        list-style-type:none;
+    }
+
+    .add-to-menu-menu li {
+        display:block;
+        padding-bottom:5px;
+    }

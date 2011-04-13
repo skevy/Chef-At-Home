@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from taggit.models import Tag, TaggedItem
+from cah.menus.models import Menu
 from cah.recipes.models import Recipe, Ingredient
 from cah.utils import paginate
 
@@ -22,7 +23,13 @@ def by_tag(request, slug):
     
 def detail(request, id):
     recipe = Recipe.objects.get(pk=id)
-    return render(request, "recipes/detail.html", { 'recipe': recipe })
+    context = {
+        'recipe': recipe
+    }
+    if request.user.is_authenticated():
+        my_menus = Menu.objects.filter(user=request.user).exclude(recipes__in=[recipe, ])
+        context.update(my_menus=my_menus)
+    return render(request, "recipes/detail.html", context)
 
 @login_required
 def add(request):

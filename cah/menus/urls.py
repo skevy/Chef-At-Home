@@ -6,6 +6,9 @@ from cah.menus.models import Menu
 
 urlpatterns = patterns('cah.menus.views',
     url(r'^$', 'index'),
+    url(r'^add/$', 'add', name="menu_create"),
+    url(r'^(?P<id>\d+)/remove_recipe/(?P<recipe_id>\d+)/$', 'remove_recipe', name="menu_remove_recipe"),
+    url(r'^(?P<id>\d+)/add_recipe/(?P<recipe_id>\d+)/$', 'add_recipe', name="menu_add_recipe"),
     url(r'^(?P<id>\d+)/$', 'detail', name="menu_detail"),
     url(r'^tags/(?P<slug>[\w\-]+)/$', 'by_tag', name="menus_by_tag"),
 )

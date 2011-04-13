@@ -12,10 +12,20 @@
 
 {% block content %}
 <h3><a href="/recipes/">Back to Recipes</a></h3>
+    {% if user.is_authenticated %}
+    <a id="add_to_menu" href="javascript:;" onclick="$('.add-to-menu-menu').toggle('slide');">Add To Menu</a>
+    <div class="add-to-menu-menu" style="display:none;">
+        <ul>
+            {% for menu in my_menus %}
+                <li><a href="{% url menu_add_recipe menu.pk recipe.pk %}">{{ menu.name }}</a></li>
+            {% endfor %}
+            <li><a href="{% url menu_create %}?add={{ recipe.pk }}">+ Create New Menu</a></li>
+        </ul>
+    </div>
+{% endif %}
     {% if recipe.get_image %}
     <img class="left" src="{{ recipe.get_image.orig_photo.url }}" width="400" />
     {% endif %}
-{% if user.is_authenticated %}<a id="add_to_menu" href="javascript:;">Add To Menu</a>{% endif %}
 <h1>{{ recipe.name }}</h1>
 
 <div class="meta">

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block extra_head %}<script src="/static/js/live-validation.min.js" type="text/javascript" charset="utf-8"></script>{% endblock %}
+{% block title %}Add Recipe{% endblock %}
+
+{% block body_class %}recipes add{% endblock %}
+
+{% block main_nav %}
+<li class="active"><a href="/recipes/">Recipes</a></li>
+<li><a href="/menus/">Menus</a></li>
+<li><a href="/meal-plans/">Meal Plans</a></li>
+{% endblock %}
+
+{% block content %}
+<h1>Create A Menu</h1><br />
+<form method="POST" name="add_menu">{% csrf_token %}
+    <fieldset>
+        <legend>Menu Information</legend>
+        <p>
+            <label for="menu_name">Menu Name</label>
+            <br />
+            <input type="text" class="title" name="menu_name" id="menu_name" value="Italian Dinner" />
+            <script>
+            var menu_name = new LiveValidation('menu_name');
+            menu_name.add( Validate.Presence );
+            </script>
+        </p>
+        <p>
+            <label for="menu_description">Menu Description</label>
+            <br />
+            <input type="text" class="title" name="menu_description" id="menu_description" value="A great recipe!" />
+            <script>
+            var menu_description = new LiveValidation('menu_description');
+            menu_description.add( Validate.Presence );
+            </script>
+        </p>
+    </fieldset>
+    <fieldset class="tags clear">
+        <legend>Tags</legend>
+        <p>
+            <input type="text" class="title" name="menu_tags" id="menu_tags" value="chicken,awesome" />
+            <script>
+            var menu_tags = new LiveValidation('menu_tags');
+            menu_tags.add( Validate.Presence );
+            </script>
+        </p>
+    </fieldset>
+
+    <input type="submit" name="submit" class="submit" value="Submit"/>
+
+</form>
+
+{% endblock %}

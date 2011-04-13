@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 
     //Add Recipe page
-    if($("body").hasClass('recipes') && $("body").hasClass('add')) {
+    if(($("body").hasClass('recipes') && $("body").hasClass('add')) || ($("body").hasClass('menus') && $("body").hasClass('add'))) {
         $('#body form input[type=text]').each(function(i, el) {
             defaultTextBox(el, $(el).attr('value'));
         });
