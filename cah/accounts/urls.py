@@ -5,6 +5,8 @@ urlpatterns = patterns('cah.accounts.views',
     url(r'^signup/$', 'signup'),
     url(r'^signup/success/$', 'signup_success', name="signup_success"),
     url(r'^signout/$', 'signout'),
+    
+    url(r'^favorite/(?P<item_type>[\w\.]+)/$', 'favorite_item'),
 )
 
 urlpatterns += patterns('',

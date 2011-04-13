@@ -35,6 +35,54 @@ $(document).ready(function() {
         });
     }
 
+    if($("body").hasClass('has-table')) {
+        $("a.favorite").click(function() {
+            var $this = $(this);
+            var item_id = parseInt($this.parents('tr').attr('data-id'));
+            var item_type = $this.parents('table').attr('data-itemtype');
+            $.ajax({
+                type: 'POST',
+                url: '/account/favorite/' + item_type + '/',
+                data: { id: item_id },
+                dataType: 'json',
+                success: function(response) {
+                    if(response.status == 'ok') {
+                        if(response.action == 'favorited') {
+                            $this.addClass('active');
+                        } else if (response.action == 'unfavorited') {
+                            $this.removeClass('active');
+                        }
+                    } else if(response.status == 'error') {
+
+                    }
+                }
+            });
+        });
+
+        //get all favorited items (ids), then just loop through and add the class, pretty simple
+
+        var url = "";
+        if($('body').hasClass('recipes')) {
+            url = "/recipes/favorites/";
+        } else if($('body').hasClass('menus')) {
+            url = "/menus/favorites/";
+        } else if($('body').hasClass('meal-plans')) {
+            url = "/meal-plans/favorites/";
+        }
+
+        if(url != "") {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                success: function(response) {
+                    $.each(response.items, function(i, item) {
+                        $("tr[data-id=" + item + "] a.favorite").addClass('active');
+                    });
+                }
+            });   
+        }
+    }
 
 
 

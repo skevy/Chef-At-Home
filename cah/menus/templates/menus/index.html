@@ -21,9 +21,10 @@
 
 {% block content %}
 <h1>All Menus</h1>
-<table>
+<table data-itemtype="menus.menu">
     <thead>
         <tr>
+            {% if user.is_authenticated %}<th class="favorite" scope="col">Favorite</th>{% endif %}
             <th class="image" scope="col">Image</th>
             <th class="name" scope="col">Title</th>
             <th class="rating" scope="col">Rating</th>
@@ -32,7 +33,8 @@
     </thead>
     <tbody>
     {% for menu in menus.object_list %}
-        <tr>
+        <tr data-id="{{ menu.pk }}">
+            {% if user.is_authenticated %}<td><a class="favorite" href="javascript:;">Favorite</a></td>{% endif %}
             <td><a href="{% url menu_detail menu.pk %}"><img src="{{ menu.get_image.thumbnail.url }}" width="100" height="70"></a></td>
             <td>{{ menu.name }}</td>
             <td class="rating"><span class="rating" style="width:{{ menu.rating|div:'5'|mul:"140" }}px">{{menu.rating}} out of 5</span></td>

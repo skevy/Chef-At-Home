@@ -21,9 +21,10 @@
 
 {% block content %}
 <h1>All Meal Plans</h1>
-<table>
+<table data-itemtype="meal_plans.mealplan">
     <thead>
         <tr>
+            {% if user.is_authenticated %}<th class="favorite" scope="col">Favorite</th>{% endif %}
             <th class="image" scope="col">Image</th>
             <th class="name" scope="col">Name</th>
             <th class="rating" scope="col">Rating</th>
@@ -32,7 +33,8 @@
     </thead>
     <tbody>
         {% for meal_plan in meal_plans.object_list %}
-        <tr>
+        <tr data-id="{{ meal_plan.pk }}">
+            {% if user.is_authenticated %}<td><a class="favorite" href="javascript:;">Favorite</a></td>{% endif %}
             <td><a href="{% url meal_plan_detail meal_plan.id %}"><img src="{{meal_plan.get_image.thumbnail.url}}" width="100" height="70"></a></td>
             <td>{{meal_plan.name}}</td>
             <td class="rating"><span class="rating" style="width:{{ meal_plan.rating|div:'5'|mul:"140" }}px">{{meal_plan.rating}} out of 5</span></td>

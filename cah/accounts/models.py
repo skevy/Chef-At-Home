@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 from social_auth.backends.facebook import FacebookBackend
 from social_auth.backends.twitter import TwitterBackend
 from social_auth.signals import pre_update
@@ -44,3 +46,12 @@ def associate_profile(sender, user, response, details, old_user, **kwargs):
     return True
 
 pre_update.connect(associate_profile)
+
+class FavoriteItem(models.Model):
+    user = models.ForeignKey(User)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+
+    def __unicode__(self):
+        return u'Favorited Item'
