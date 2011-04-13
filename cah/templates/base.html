@@ -15,16 +15,19 @@
                 <div id="top-bar">
                     {% if user.is_authenticated %}
                     <div class="signed-in">
+                        {% if user.get_profile.avatar %}
                         <img src="{{ user.get_profile.avatar }}" />
-{#                        <a href="/account/">Account</a>#}
-                        <a href="/account/logout/">Sign Out</a>
+                        {% endif %}
+                        <a style="text-decoration:none; color:#CCC; ">Signed in as {{ user.get_full_name }}{% if user.get_profile.service %} ({{ user.get_profile.service|title }}){% endif %}</a>
+                        <a href="/account/">Account</a>
+                        <a href="/account/signout/">Sign Out</a>
                     </div>
                     {% else %}
                     <div class="signed-out">
                         <a class="login-button facebook-login" href="/account/auth/login/facebook/">Sign in with Facebook</a>
                         <a class="login-button twitter-login" href="/account/auth/login/twitter/">Sign in with Twitter</a>
-{#                        <a href="#">Sign in</a>#}
-{#                        <a href="#">Sign up</a>#}
+                        <a href="/account/signin/">Sign in</a>
+                        <a href="/account/signup/">Sign up</a>
                     </div>
                     {% endif %}
 

@@ -118,7 +118,7 @@ FACEBOOK_EXTENDED_PERMISSIONS=['email', ]
 LOGIN_URL = '/account/auth/login/facebook/'
 LOGIN_REDIRECT_URL = '/'
 
-AUTH_PROFILE_MODULE = "cah.accounts.CAHProfile"
+AUTH_PROFILE_MODULE = "accounts.CAHProfile"
 
 # CACHE_BACKEND = 'locmem://'
 

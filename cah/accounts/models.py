@@ -9,6 +9,9 @@ class CAHProfile(models.Model):
     avatar = models.URLField(max_length=1000)
     service = models.CharField(max_length=100)
 
+    def __unicode__(self):
+        return u'%s - %s' % (self.user, self.service)
+
 
 def associate_profile(sender, user, response, details, old_user, **kwargs):
 

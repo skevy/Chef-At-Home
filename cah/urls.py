@@ -11,8 +11,7 @@ urlpatterns = patterns('',
     url(r'^meal-plans/', include('cah.meal_plans.urls')),
     url(r'^recipes/', include('cah.recipes.urls')),
 
-    url(r'^account/auth/', include('social_auth.urls')),
-    url(r'^account/logout/$', 'cah.views.logout'),
+    url(r'^account/', include('cah.accounts.urls')),
 
     url(r'^search/$', 'cah.views.search'),
 

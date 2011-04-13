@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Recipe{% endblock %}
+
+{% block body_class %}signup-form{% endblock %}
+
+{% block main_nav %}
+<li><a href="/recipes/">Recipes</a></li>
+<li><a href="/menus/">Menus</a></li>
+<li><a href="/meal-plans/">Meal Plans</a></li>
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="/account/signup/">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Sign Up!" />
+    </form>
+{% endblock %}

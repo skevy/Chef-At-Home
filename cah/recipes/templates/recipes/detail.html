@@ -15,7 +15,7 @@
     {% if recipe.get_image %}
     <img class="left" src="{{ recipe.get_image.orig_photo.url }}" width="400" />
     {% endif %}
-<a id="add_to_menu" href="add">Add To Menu</a>
+{% if user.is_authenticated %}<a id="add_to_menu" href="add">Add To Menu</a>{% endif %}
 <h1>{{ recipe.name }}</h1>
 
 <div class="meta">

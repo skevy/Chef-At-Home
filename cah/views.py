@@ -13,10 +13,6 @@ def index(request):
         template_name = "index_signedout.html"
     return render(request, template_name, {})
 
-def logout(request):
-    auth.logout(request)
-    return HttpResponseRedirect('/')
-
 def search(request):
     q = request.GET.get('q', None)
     if q:
